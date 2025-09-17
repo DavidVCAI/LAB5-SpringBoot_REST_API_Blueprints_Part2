@@ -111,4 +111,16 @@ public class BlueprintsServices {
 
     return filteredBlueprints;
   }
+
+  /**
+   * Updates an existing blueprint in the system.
+   *
+   * @param blueprint the blueprint to be updated
+   * @throws BlueprintNotFoundException    if the blueprint to update doesn't
+   *                                       exist
+   * @throws BlueprintPersistenceException if any persistence error occurs
+   */
+  public void updateBlueprint(Blueprint blueprint) throws BlueprintNotFoundException, BlueprintPersistenceException {
+    blueprintsPersistence.updateBlueprint(blueprint);
+  }
 }

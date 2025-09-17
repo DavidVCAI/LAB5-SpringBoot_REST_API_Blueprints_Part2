@@ -55,4 +55,14 @@ public interface BlueprintsPersistence {
    *                                    author
    */
   public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException;
+
+  /**
+   * Updates an existing blueprint in the persistence layer.
+   *
+   * @param blueprint the blueprint to be updated
+   * @throws BlueprintNotFoundException    if the blueprint to update doesn't
+   *                                       exist
+   * @throws BlueprintPersistenceException if any other persistence error occurs
+   */
+  public void updateBlueprint(Blueprint blueprint) throws BlueprintNotFoundException, BlueprintPersistenceException;
 }
