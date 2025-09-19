@@ -1,24 +1,21 @@
-### Escuela Colombiana de Ingeniería
+# Escuela Colombiana de Ingeniería
 
-### Arquitecturas de Software
+## Arquitecturas de Software
 
+### API REST para la gestión de planos.
 
-
-#### API REST para la gestión de planos.
-
-En este ejercicio se va a construír el componente BlueprintsRESTAPI, el cual permita gestionar los planos arquitectónicos de una prestigiosa compañia de diseño. La idea de este API es ofrecer un medio estandarizado e 'independiente de la plataforma' para que las herramientas que se desarrollen a futuro para la compañía puedan gestionar los planos de forma centralizada.
+En este ejercicio se va a construír el componente Blueprints REST API, el cual permita gestionar los planos arquitectónicos de una prestigiosa compañia de diseño. La idea de este API es ofrecer un medio estandarizado e 'independiente de la plataforma' para que las herramientas que se desarrollen a futuro para la compañía puedan gestionar los planos de forma centralizada.
 El siguiente, es el diagrama de componentes que corresponde a las decisiones arquitectónicas planteadas al inicio del proyecto:
 
-![](img/CompDiag.png)
+<img src="assets/images/components_diagram.png" alt="Components Diagram" width="70%">
 
 Donde se definió que:
 
-* El componente BlueprintsRESTAPI debe resolver los servicios de su interfaz a través de un componente de servicios, el cual -a su vez- estará asociado con un componente que provea el esquema de persistencia. Es decir, se quiere un bajo acoplamiento entre el API, la implementación de los servicios, y el esquema de persistencia usado por los mismos.
+* El componente Blueprints REST API debe resolver los servicios de su interfaz a través de un componente de servicios, el cual a su vez estará asociado con un componente que provea el esquema de persistencia. Es decir, se quiere un bajo acoplamiento entre el API, la implementación de los servicios, y el esquema de persistencia usado por los mismos.
 
 Del anterior diagrama de componentes (de alto nivel), se desprendió el siguiente diseño detallado, cuando se decidió que el API estará implementado usando el esquema de inyección de dependencias de Spring (el cual requiere aplicar el principio de Inversión de Dependencias), la extensión SpringMVC para definir los servicios REST, y SpringBoot para la configurar la aplicación:
 
-
-![](img/ClassDiagram.png)
+<img src="assets/images/class_diagram_1.png" alt="Class Diagram" width="70%">
 
 ### Parte I
 
@@ -109,7 +106,7 @@ Del anterior diagrama de componentes (de alto nivel), se desprendió el siguient
 
 ### Parte III
 
-El componente BlueprintsRESTAPI funcionará en un entorno concurrente. Es decir, atederá múltiples peticiones simultáneamente (con el stack de aplicaciones usado, dichas peticiones se atenderán por defecto a través múltiples de hilos). Dado lo anterior, debe hacer una revisión de su API (una vez funcione), e identificar:
+El componente Blueprints REST API funcionará en un entorno concurrente. Es decir, atederá múltiples peticiones simultáneamente (con el stack de aplicaciones usado, dichas peticiones se atenderán por defecto a través múltiples de hilos). Dado lo anterior, debe hacer una revisión de su API (una vez funcione), e identificar:
 
 * Qué condiciones de carrera se podrían presentar?
 * Cuales son las respectivas regiones críticas?
